@@ -38,7 +38,15 @@ class Template {
 	    $this->vars[$index] = $value;
 	}
 
-	public function render() {
+	/**
+	*
+	*
+	* @param string $shared_folder (Folder containing header and footer for each action)
+	*
+	* @return void
+	*
+	*/
+	public function render($shared_folder) {
 		extract($this->vars);
 		$path = ROOT.DS.'application'.DS.'view'.DS;
 		$header = $path.$this->controller.DS.'header.php';
@@ -54,14 +62,14 @@ class Template {
         if (file_exists($header)) 
             require_once ($header);
         else
-            require_once $path.'shared'.DS.'header.php';
+            require_once $path.$shared_folder.DS.'header.php';
 
         require_once ($file);       
              
         if (file_exists($footer))
             require_once ($footer);
         else
-            require_once $path.'shared'.DS.'footer.php';
+            require_once $path.$shared_folder.DS.'footer.php';
     }
 
 	public function show($name) {

@@ -12,7 +12,7 @@ class homeController Extends Controller {
 
 	    /* parse variables as an array to template*/
 		$this->template->data = $data;
-		$this->template->render();
+		$this->template->render('shared');
 	}
 
 	public function about(){
@@ -21,6 +21,6 @@ class homeController Extends Controller {
 
 	    /* parse variables as an array to template*/
 		$this->template->data = $data;
-		$this->template->render();
+		$this->template->render('shared');
 	}
 }

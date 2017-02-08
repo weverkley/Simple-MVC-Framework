@@ -6,6 +6,6 @@ class errorController Extends Controller {
 
 	    /* parse variables as an array to template*/
 		$this->template->data = $data;
-		$this->template->render();
+		$this->template->render('shared');
 	}
 }
