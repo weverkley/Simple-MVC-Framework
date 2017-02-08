@@ -23,10 +23,8 @@ class Controller {
     * Initialize the required classes and variables
     */
     protected function init(){
-    	
+     /* Put your code here*/
     }
 
-    public function __destruct() {
-        $this->template->render();
-    }
+    public function __destruct() {}
 }

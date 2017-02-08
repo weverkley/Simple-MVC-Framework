@@ -11,6 +11,6 @@ class Model {
     * Initialize the required classes and variables
     */
     protected function init(){
-    	
+     /* Put your code here*/
     }
 }

@@ -1,5 +1,6 @@
 <?php
-class Database {
+class Database
+{
     protected $_server, $_username, $_password, $_errorInfo;
     
     /**
@@ -50,7 +51,7 @@ class Database {
         $this->_server   = $server;         // Host address
         $this->_username = $username;        // User
         $this->_password = $password;    // Password
-        $this->dbName   = $dbName;        // Database         
+        $this->dbName   = $dbName;        // Database
        
         if ($connect_now){
             $this->connect($persistent, $pdoFlags);
@@ -942,6 +943,7 @@ class Database {
             $s = "<br />Error Code:" . $this->_errorInfo['errno'] . "<br /> Description: " . $this->_errorInfo['error'] . "<br />";
             if(!empty($extraInfo)){
                 $s .= $extraInfo ."<br />";
+                
             }
             trigger_error($s, E_USER_ERROR);
         }
