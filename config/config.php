@@ -8,8 +8,12 @@ define('DB_USER', 'root');
 define('DB_PASSWORD', '');
 define('DB', 'test');
 
-// default controller.
+/* controllers config. */
+// default controller
 define('DEFAULT_CONTROLLER', 'home');
+// hide default controller from url (true, false) EX: /index, /about
+define('HIDE_DEFAULT_CONTROLLER', false);
+/* ./end controller config */
 
 // fill with the folder name followed by a / or just leave empty.
 $webFolder =  'Simple-MVC-Framework/';

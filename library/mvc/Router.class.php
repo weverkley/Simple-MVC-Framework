@@ -13,7 +13,7 @@ class Router {
         $url = isset($_GET['route'])? $_GET['route'] : $default;
         $url = explode('/', $url);
         $url = array_filter($url);
-
+        
         $this->controller = strtolower(array_shift($url));
         $this->action = strtolower(array_shift($url));  
         $this->params = $url;
@@ -23,11 +23,41 @@ class Router {
 
 	public function dispatch(){
         $controller = self::getController().'Controller';
+        $defaultRoute = ROOT.DS.'application'.DS.'controller'.DS.DEFAULT_CONTROLLER.'Controller.php';
         $route = ROOT.DS.'application'.DS.'controller'.DS.$controller.'.php';
         $action = self::getAction();
         $params = self::getParams();
 
-        if(is_readable($route)){
+        if (is_readable($defaultRoute) && HIDE_DEFAULT_CONTROLLER){
+            
+            if (is_readable($route)) {
+                $controller = new $controller(self::getController(), $action, $params);
+            } else {
+                $this->controller = strtolower(DEFAULT_CONTROLLER);
+
+                $url = explode('/', $_GET['route']);
+
+                $controller = self::getController().'Controller';
+                $this->action = strtolower(array_shift($url));
+                $this->params = $url;
+
+                $action = self::getAction();
+                $params = self::getParams();
+
+                $controller = new $controller(self::getController(), $action, $params);
+            }
+            
+            if (!is_callable(array($controller, $action))){
+                $this->action = 'index';
+            }
+
+            if(isset($params)){
+                call_user_func_array(array($controller, self::getAction()), self::getParams());
+            }
+            else{
+                call_user_func(array($controller, self::getAction()));
+            }
+        } else if (is_readable($route)) {
             $controller = new $controller(self::getController(), $action, $params);
             
             if(!is_callable(array($controller, $action))){
@@ -40,8 +70,7 @@ class Router {
             else{
                 call_user_func(array($controller, self::getAction()));
             }
-        }
-        else {
+        } else {
             $controller = new errorController('error', 'error404', array());
             $controller->error404();
         }

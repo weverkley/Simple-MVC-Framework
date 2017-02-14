@@ -1,5 +1,5 @@
 <?php
-class blogModel extends Model{
+class homeModel extends Model{
 	protected function init(){
 
 	}
