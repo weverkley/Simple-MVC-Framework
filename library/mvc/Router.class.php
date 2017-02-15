@@ -47,8 +47,9 @@ class Router {
                 $controller = new $controller(self::getController(), $action, $params);
             }
             
-            if (!is_callable(array($controller, $action))){
-                $this->action = 'index';
+            if (!method_exists($controller, $action) && !is_callable(array($controller, $action))){
+                $controller = new errorController('error', 'error404', array());
+                $controller->error404();
             }
 
             if(isset($params)){
@@ -59,9 +60,10 @@ class Router {
             }
         } else if (is_readable($route)) {
             $controller = new $controller(self::getController(), $action, $params);
-            
-            if(!is_callable(array($controller, $action))){
-                $this->action = 'index';
+
+            if (!method_exists($controller, $action) && !is_callable(array($controller, $action))){
+                $controller = new errorController('error', 'error404', array());
+                $controller->error404();
             }
 
             if(isset($params)){
