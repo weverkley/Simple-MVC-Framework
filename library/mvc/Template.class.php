@@ -69,7 +69,7 @@ class Template {
         if (file_exists($footer))
             require_once ($footer);
         else
-            require_once (file_exists($path.$shared_folder.DS.'footer.php'))? $path.$shared_folder.DS.'footer.php' : $path.$shared_folder.DS.'footer.hmtl';
+            require_once (file_exists($path.$shared_folder.DS.'footer.php'))? $path.$shared_folder.DS.'footer.php' : $path.$shared_folder.DS.'footer.html';
     }
 
 	public function show($name) {
