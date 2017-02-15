@@ -46,44 +46,42 @@ class Template {
 	* @return void
 	*
 	*/
-	public function render($shared_folder) {
+	public function render($shared_folder = null) {
 		extract($this->vars);
 		$path = ROOT.DS.'application'.DS.'view'.DS;
-		$header = $path.$this->controller.DS.'header.php';
-		$file = $path.$this->controller.DS.$this->action . '.php';
+		$header = (file_exists($path.$this->controller.DS.'header.php'))? $path.$this->controller.DS.'header.php' : $path.$this->controller.DS.'header.html';
+		$file = (file_exists($path.$this->controller.DS.$this->action.'.php'))? $path.$this->controller.DS.$this->action.'.php' : $path.$this->controller.DS.$this->action.'.html';
 
 		if ($this->action == 'error404') 
-			$file = $path.'error'.DS.$this->action . '.php';
+			$file = (file_exists($path.'error'.DS.$this->action.'.php'))? $path.'error'.DS.$this->action.'.php' : $path.'error'.DS.$this->action.'.html';
 
  		if (!file_exists($file)) 
- 			$file = $path.$this->controller.DS.'index.php';
+ 			$file = (file_exists($path.$this->controller.DS.'index.php'))? $path.$this->controller.DS.'index.php' : $path.$this->controller.DS.'index.html';
 
-		$footer = $path.$this->controller.DS.'footer.php';
+		$footer = (file_exists($path.$this->controller.DS.'footer.php'))? $path.$this->controller.DS.'footer.php' : $path.$this->controller.DS.'footer.html';
         if (file_exists($header)) 
             require_once ($header);
         else
-            require_once $path.$shared_folder.DS.'header.php';
+            require_once (file_exists($path.$shared_folder.DS.'header.php'))? $path.$shared_folder.DS.'header.php' : $path.$shared_folder.DS.'header.html';
 
         require_once ($file);       
              
         if (file_exists($footer))
             require_once ($footer);
         else
-            require_once $path.$shared_folder.DS.'footer.php';
+            require_once (file_exists($path.$shared_folder.DS.'footer.php'))? $path.$shared_folder.DS.'footer.php' : $path.$shared_folder.DS.'footer.hmtl';
     }
 
 	public function show($name) {
-		$path = ROOT.DS.'application'.DS.'view'.DS.$name.'.php';
+		$path = (file_exists(ROOT.DS.'application'.DS.'view'.DS.$name.'.php'))? ROOT.DS.'application'.DS.'view'.DS.$name.'.php' : ROOT.DS.'application'.DS.'view'.DS.$name.'.html';
 
-		if (!file_exists($path))
-		{
+		if (!file_exists($path)) {
 			throw new Exception('Template not found in '. $path);
 			return false;
 		}
 
 		// Load variables
-		foreach ($this->vars as $key => $value)
-		{
+		foreach ($this->vars as $key => $value) {
 			$$key = $value;
 		}
 
