@@ -6,6 +6,7 @@ class Template {
 	 */
 	private $vars = array();
 	private $controller;
+	private $model;
 	private $action;
 
 	/**
@@ -17,8 +18,9 @@ class Template {
 	 * @return void
 	 *
 	 */
-	public function __construct($controller, $action){
+	public function __construct($controller, $model, $action){
 		$this->controller = $controller;
+		$this->model = $model;
 		$this->action = $action;
 	}
 

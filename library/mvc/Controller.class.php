@@ -11,12 +11,13 @@ class Controller {
 		//$this->registry = Registry::getInstance();
 		$method = $model;
 		$model = $controller.'Model';
-		$this->controller = $controller;
-		$this->params = $params;
-		$this->template = new Template($controller, $method);
-		$this->init();
 		if(class_exists($model)) 
 			$this->model = new $model($this->db);
+
+		$this->controller = $controller;
+		$this->params = $params;
+		$this->template = new Template($controller, $this->model, $method);
+		$this->init();
 	}
 
 	/**
