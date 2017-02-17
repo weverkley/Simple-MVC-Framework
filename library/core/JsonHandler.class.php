@@ -10,17 +10,17 @@ class JsonHandler {
         JSON_ERROR_UTF8 => 'Malformed UTF-8 characters, possibly incorrectly encoded'
     );
 
-    public static function encode($status, $message, $data = null, $exception = null) {
+    /**
+	*
+	* @param array $data (data array to encode)
+	*
+	* @return array
+	*
+	*/
+    public static function encode($data) {
         header("Content-type: application/json; charset=utf-8");
 
-        $array = array(
-            'status' => $status,
-            'message' => $message,
-            'data' => $data,
-            'exception' => $exception
-        );
-
-        $result = json_encode($array);
+        $result = json_encode($data);
 
         if($result)  {
             return $result;
@@ -29,6 +29,15 @@ class JsonHandler {
         throw new RuntimeException(self::$_messages[json_last_error()]);
     }
 
+    /**
+	*
+	* @param array $json (data array to decode)
+    *
+	* @param array $assoc (assoc json array while decoding default value false)
+	*
+	* @return array
+	*
+	*/
     public static function decode($json, $assoc = false) {
         header("Content-type: application/json; charset=utf-8");
 

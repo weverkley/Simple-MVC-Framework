@@ -1,8 +1,6 @@
 <?php
 class homeController Extends Controller {
-	protected function init(){
-		/*$this->db = new Database();*/
-	}
+	protected function init(){}
 
 	public function index() {
 		/* template variables */

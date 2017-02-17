@@ -6,14 +6,27 @@ class Registry {
 	* @access private
 	*/
 	private $vars = array();
-	private static $instance;
 
-	public static function getInstance(){
-		if(!self::$instance instanceof self){
-			self::$instance = new Registry;
-		}
-		return self::$instance;
-	}
+	/*
+	* @the instance array
+	* @access private static
+	*/
+	private static $instance = array();
+
+	/**
+    * Check if the class is already an instance
+    * 
+    * @param object $class
+    */
+	public static function getInstance($class){
+        if(isset(self::$instance[$class]))
+            return self::$instance[$class];
+        else
+        { 
+            self::$instance[$class] = new $class();
+            return self::$instance[$class];
+        }   
+    }
 
 	/**
 	*

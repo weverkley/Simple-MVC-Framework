@@ -1,23 +1,5 @@
 <?php
 class Helper{  
-    
-    private static $instance = array();
-
-    /**
-    * Check if the class is already an instantiated
-    * 
-    * @param object $class
-    */
-    public static function getInstance($class){
-        if(isset(self::$instance[$class]))
-            return self::$instance[$class];
-        else
-        { 
-            self::$instance[$class] = new $class();
-            return self::$instance[$class];
-        }   
-    }
-
     /**
     * Check if environment is development and display errors
     * 

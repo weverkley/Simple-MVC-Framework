@@ -18,7 +18,7 @@ spl_autoload_register('autoload');
 require_once ROOT.DS.'config'.DS.'config.php';
 
 // start session
-Helper::getInstance('Session');
+Registry::getInstance('Session');
 
 // set error reporting to true or false at config to display errors or not
 Helper::setReporting();
@@ -30,7 +30,7 @@ Helper::removeMagicQuotes();
 Helper::unregisterGlobals();
 
 // start the url routing
-$router = Helper::getInstance('Router');
+$router = Registry::getInstance('Router');
 $router->dispatch();
 
 /*

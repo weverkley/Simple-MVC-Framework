@@ -82,7 +82,7 @@ class Database
         $flags = $this->_ensurePdoFlags($pdoFlags);
 
         // Create new instance
-        $dsn = "mysql:host={$this->_server}";
+        $dsn = "mysql:host={$this->_server};charset=utf8";
         try {
             // Add instance
             $this->connection = new Pdo($dsn, $this->_username, $this->_password, $flags);

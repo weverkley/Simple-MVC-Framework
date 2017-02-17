@@ -1,7 +1,7 @@
 <?php
 class homeModel extends Model{
 	protected function init(){
-
+		$this->db = Registry::getInstance('Database');
 	}
 
 	public function getUser(){

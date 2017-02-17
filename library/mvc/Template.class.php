@@ -50,6 +50,9 @@ class Template {
 	*/
 	public function render($shared_folder = null) {
 		extract($this->vars);
+
+		if (Helper::isAjax()) exit;
+
 		$path = ROOT.DS.'application'.DS.'view'.DS;
 		$header = (file_exists($path.$this->controller.DS.'header.php'))? $path.$this->controller.DS.'header.php' : $path.$this->controller.DS.'header.html';
 		$file = (file_exists($path.$this->controller.DS.$this->action.'.php'))? $path.$this->controller.DS.$this->action.'.php' : $path.$this->controller.DS.$this->action.'.html';
