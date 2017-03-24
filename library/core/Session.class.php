@@ -16,7 +16,6 @@ class Session {
     }
 
     public static function set($index, $value) {
-    	session_register($index);
         $_SESSION[$index] = $value; 
     }
 

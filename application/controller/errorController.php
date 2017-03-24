@@ -8,6 +8,7 @@ class errorController Extends Controller {
 
 	    /* parse variables as an array to template*/
 		$this->template->data = $data;
-		$this->template->render('shared');
+		/* rendering header and footer from error view folder */
+		$this->template->render();
 	}
 }
