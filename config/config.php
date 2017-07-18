@@ -21,11 +21,6 @@ define('DEFAULT_CONTROLLER', 'home');
 define('HIDE_DEFAULT_CONTROLLER', false);
 /* ./end controller config */
 
-// Pusher keys
-define('APP_ID', '');
-define('APP_KEY', '');
-define('APP_SECRET', '');
-
 // fill with the folder name followed by a / or just leave empty.
 $webFolder =  'Simple-MVC-Framework/';
 define('BASE_URL', Helper::getServerUrl().'/'.$webFolder);

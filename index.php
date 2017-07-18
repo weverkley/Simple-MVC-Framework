@@ -1,4 +1,6 @@
 <?php
+ob_start();
+
 /* site path */
 define ('ROOT', realpath(dirname(__FILE__)));
 define('DS', DIRECTORY_SEPARATOR);
@@ -23,3 +25,4 @@ ob_start('sanitize_output');
 
 /* require library/bootstrap.php */
 require_once ROOT.DS.'library'.DS.'bootstrap.php';
+ob_end_flush();
