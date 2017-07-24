@@ -5,17 +5,13 @@ PHP Framework for fast development. It's designed to be lightweight and modular,
 ##Requirements
 
  - Apache Web Server with mod_rewrite support.
- - PHP >= 5.2.
-
- - Database (Optional, this framework has a PDO class and you can use it or change to the one you want).
+ - PHP >= 5.4.
 
 ## Installation
 
 1. Download the framework
 2. Unzip the package.
 3. Upload the framework files to your server.
-4. Open the config.php (config folder) file with a text editor and set your base URL.
-5. Set database credentials (if a database is needed).
 
 ## License
 
