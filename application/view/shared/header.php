@@ -8,9 +8,8 @@
     <title><?php echo $data['title']; ?></title>
 
     <!-- Bootstrap -->
-    <link href="<?= BASE_URL ?>public/css/bootstrap.min.css" rel="stylesheet">
-    <link href="<?= BASE_URL ?>public/css/bootstrap-flat.min.css" rel="stylesheet">
-    <link href="<?= BASE_URL ?>public/css/bootstrap-flat-extras.min.css" rel="stylesheet">
+    <link href="<?= BASE_URL ?>public/libs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link href="<?= BASE_URL ?>public/libs/components-font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -34,7 +33,7 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
-                    <?php 
+                    <?php
                         $pages = array();
                         $pages["index"] = "Home";
                         $pages["home/about"] = "About";
@@ -43,7 +42,7 @@
                             $addr = $link == 'index' ? BASE_URL : $link;
                             echo "<li{$current}><a href='{$addr}'>{$title}</a></li>";
                             unset($link);
-                        }          
+                        }
                     ?>
                 </ul>
             </div><!-- /.navbar-collapse -->

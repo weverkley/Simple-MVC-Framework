@@ -20,9 +20,8 @@ function sanitize_output($buffer) {
     return $buffer;
 }
 
-ob_start('sanitize_output');
+//ob_start('sanitize_output');
 
+require_once (!file_exists(ROOT.DS.'config'.DS.'config.php'))? ROOT.DS.'install'.DS.'wizard.php' : ROOT.DS.'library'.DS.'bootstrap.php';
 
-/* require library/bootstrap.php */
-require_once ROOT.DS.'library'.DS.'bootstrap.php';
 ob_end_flush();
