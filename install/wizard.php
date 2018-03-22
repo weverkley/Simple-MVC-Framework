@@ -60,12 +60,6 @@
 						<li class="list-group-item">PDO Extension <span class="badge"><i class="fa fa-times"></i></span></li>
 					<?php endif; ?>
 
-					<?php if (shell_exec('mysql -V') != ''): ?>
-						<li class="list-group-item">MySQL Extension <span class="badge"><i class="fa fa-check"></i></span></li>
-					<?php else: $error = true; ?>
-						<li class="list-group-item">MySQL Extension <span class="badge"><i class="fa fa-times"></i></span></li>
-					<?php endif; ?>
-
 					<?php if (is_writable(ROOT.DS.'config'.DS)): ?>
 						<li class="list-group-item">Writable config file <span class="badge"><i class="fa fa-check"></i></span></li>
 					<?php else: $error = true; ?>
